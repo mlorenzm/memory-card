@@ -1,3 +1,5 @@
-const App: React.FC = () => {};
+import Card from "./components/Card";
 
-export default App;
+export default function App() {
+  <Card />;
+}
