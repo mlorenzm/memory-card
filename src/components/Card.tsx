@@ -1,8 +1,15 @@
 import { PokemonTypes } from "../types";
-
-const Card = (props: PokemonTypes) => {
+interface PokemonCardPropTypes extends PokemonTypes {
+  handlePokemonClick?: () => void;
+}
+const Card = (props: PokemonCardPropTypes) => {
   return (
-    <div className="rounded-lg w-48 bg-base-100 hover:border-2 hover:border-primary cursor-pointer shadow-xl flex flex-col">
+    <div
+      className=" p-2 rounded-lg w-48 bg-base-100 hover:border-2 border-primary cursor-pointer flex flex-col"
+      onClick={() => {
+        console.log(props.name);
+      }}
+    >
       <img
         className="self-center"
         src={props.sprite} //SRC

@@ -36,8 +36,8 @@ export default function App() {
     return formattedPokemon;
   };
   return (
-    <div>
-      <ul>
+    <div className="grid items-center h-screen w-screen">
+      <ul className="grid grid-rows-3 grid-cols-2 gap-2">
         {pokemon.map((pokemon) => (
           <Card {...pokemon} />
         ))}
