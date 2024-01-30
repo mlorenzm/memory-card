@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { PokemonTypes } from "./types";
+import Card from "./components/Card";
 export default function App() {
-  const pokemon = [];
+  const [pokemon, setPokemon] = useState<PokemonTypes[]>([]);
   useEffect(() => {
     const pokemonNames = [
       "gardevoir",
@@ -18,8 +19,9 @@ export default function App() {
         fetchPokemon(pokemon)
       );
       const pokemonData = await Promise.all(promises);
-      console.log(pokemonData);
+      setPokemon(pokemonData);
     };
+
     fetchAllPokemon();
   }, []);
 
@@ -33,5 +35,13 @@ export default function App() {
 
     return formattedPokemon;
   };
-  return <main></main>;
+  return (
+    <div>
+      <ul>
+        {pokemon.map((pokemon) => (
+          <Card {...pokemon} />
+        ))}
+      </ul>
+    </div>
+  );
 }

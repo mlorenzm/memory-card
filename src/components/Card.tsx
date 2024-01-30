@@ -1,18 +1,21 @@
-export default function Card() {
+import { PokemonTypes } from "../types";
+
+const Card = (props: PokemonTypes) => {
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
-      <figure>
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/132.gif" //SRC
-          alt="Pokemon"
-        />
-      </figure>
-      <div className="card-body">
-        <h2 className="card-title">{/* Name */}</h2>
-        <div className="card-actions justify-end">
-          <div className="badge badge-outline">{/* type */}</div>
-        </div>
+    <div className="rounded-lg w-48 bg-base-100 hover:border-2 hover:border-primary cursor-pointer shadow-xl flex flex-col">
+      <img
+        className="self-center"
+        src={props.sprite} //SRC
+        alt={props.name}
+        width={"120px"}
+      />
+      <div>
+        <h2 className="card-title">
+          {props.name.charAt(0).toUpperCase() + props.name.slice(1)}
+        </h2>
       </div>
     </div>
   );
-}
+};
+
+export default Card;
