@@ -35,11 +35,23 @@ export default function App() {
 
     return formattedPokemon;
   };
+
+  const handlePokemonClick = () => {
+    console.log(pokemon);
+
+    // Gamelogic fn
+    // Shuffle the array
+  };
   return (
     <div className="grid items-center h-screen w-screen">
       <ul className="grid grid-rows-3 grid-cols-2 gap-2">
-        {pokemon.map((pokemon) => (
-          <Card {...pokemon} />
+        {pokemon.map((pokemon, index) => (
+          <Card
+            key={index}
+            name={pokemon.name}
+            sprite={pokemon.sprite}
+            onClick={handlePokemonClick}
+          />
         ))}
       </ul>
     </div>
