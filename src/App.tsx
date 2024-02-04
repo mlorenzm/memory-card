@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { PokemonTypes } from "./types";
-import Container from "./components/Container";
+import Container from "./components/Board";
 export default function App() {
   const [pokemon, setPokemon] = useState<PokemonTypes[]>([]);
   useEffect(() => {
