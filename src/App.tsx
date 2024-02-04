@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { PokemonTypes } from "./types";
-import Card from "./components/Card";
+import Container from "./components/Container";
 export default function App() {
   const [pokemon, setPokemon] = useState<PokemonTypes[]>([]);
   useEffect(() => {
@@ -36,24 +36,5 @@ export default function App() {
     return formattedPokemon;
   };
 
-  const handlePokemonClick = () => {
-    console.log(pokemon);
-
-    // Gamelogic fn
-    // Shuffle the array
-  };
-  return (
-    <div className="grid items-center h-screen w-screen">
-      <ul className="grid grid-rows-3 grid-cols-2 gap-2">
-        {pokemon.map((pokemon, index) => (
-          <Card
-            key={index}
-            name={pokemon.name}
-            sprite={pokemon.sprite}
-            onClick={handlePokemonClick}
-          />
-        ))}
-      </ul>
-    </div>
-  );
+  return <Container pokemon={pokemon} />;
 }
