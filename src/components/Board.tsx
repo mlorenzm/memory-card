@@ -6,8 +6,9 @@ type Props = {
 
 const Container = (props: Props) => {
   const { pokemon } = props;
-  const handlePokemonClick = () => {
-    console.log(pokemon);
+
+  const handlePokemonClick = (index: number) => () => {
+    console.log(pokemon[index].name);
     // Gamelogic fn
     // Shuffle the array
   };
@@ -19,7 +20,7 @@ const Container = (props: Props) => {
             key={index}
             name={pokemon.name}
             sprite={pokemon.sprite}
-            onClick={handlePokemonClick}
+            onClick={handlePokemonClick(index)}
           />
         ))}
       </ul>
