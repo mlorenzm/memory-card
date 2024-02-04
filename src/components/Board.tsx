@@ -12,16 +12,32 @@ const Container = (props: Props) => {
 
   const handlePokemonClick = (index: number) => () => {
     const currentPokemon = pokemon[index].name;
+
     if (!clickedPokemons.includes(currentPokemon)) {
       setClickedPokemons([...clickedPokemons, currentPokemon]);
       setScore(score + 1);
-      console.log(clickedPokemons);
-      // Shuffle the array
+      if (score == pokemon.length - 1) {
+        console.log("You won!");
+        // some modal to reset game
+        resetGame();
+      }
+      shuffleArray(pokemon);
     } else {
-      setScore(0);
-      setClickedPokemons([]);
+      console.log("You lost! Try again?");
+      resetGame();
     }
-    // Gamelogic fn
+  };
+
+  const resetGame = () => {
+    setScore(0);
+    setClickedPokemons([]);
+  };
+
+  const shuffleArray = (array: PokemonTypes[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   };
   return (
     <main className="grid items-center h-screen w-screen">
